@@ -10,7 +10,7 @@ router.get("/", (req, res, next) => {
     if (err) throw err;
   });
   SQL =
-    "select firstName , lastName , Title from article,author,writes where idArticle = articleID and idAuthor = authorID; ";
+    "select firstName , lastName , Title from Article,Author,Writes where idArticle = articleID and idAuthor = authorID; ";
   con.query(SQL, (err, result) => {
     if (err) throw err;
     console.log("result", result);
@@ -27,7 +27,7 @@ router.post("/", (req, res, next) => {
     if (err) throw err;
   });
   SQL =
-    "select idArticle, firstName , lastName , Title from article,author,writes where idArticle = articleID and idAuthor = authorID and firstName = '" +
+    "select idArticle, firstName , lastName , Title from Article,Author,Writes where idArticle = articleID and idAuthor = authorID and firstName = '" +
     condition +
     "'";
   con.query(SQL, (err, result) => {
