@@ -3,10 +3,13 @@
 <!DOCTYPE html>
 <html>
   <head>
-      <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" rel="stylesheet" 
-      id="bootstrap-css">
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
-      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <link
+      href="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <title><%=title%></title>
     <link
       rel="stylesheet"
@@ -14,27 +17,33 @@
       integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
       crossorigin="anonymous"
     />
-    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" 
-    rel="stylesheet" 
-    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" 
-    crossorigin="anonymous">
+    <link
+      href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"
+      rel="stylesheet"
+      integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN"
+      crossorigin="anonymous"
+    />
     <link rel="stylesheet" href="/stylesheets/style.css" />
   </head>
   <body>
-
-  <div class="container search-bar">
+    <div class="container search-bar">
       <div class="row">
-            <div class="col-md-12">
-            <h2 class="title">Research Buddy</h2>
-                <div id="custom-search-input">
-                    <form method="POST" class="input-group col-md-12" action="/" >
-                        <input name="Search" type="text" class="form-control input-lg-12" placeholder="Search for Papers" />
-                        <button class="btn btn-primary btn-lg" type="submit">
-                            Search
-                        </button>
-                      </form>
-                </div>
-            </div>
+        <div class="col-md-12">
+          <h2 class="title">Research Buddy</h2>
+          <div id="custom-search-input">
+            <form method="POST" class="input-group col-md-12" action="/">
+              <input
+                name="Search"
+                type="text"
+                class="form-control input-lg-12"
+                placeholder="Search for Papers"
+              />
+              <button class="btn btn-primary btn-lg" type="submit">
+                Search
+              </button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -73,19 +82,20 @@
         </div>
       </div>
       <div class="search-list">
-        <h3><%= Employee.length %> results found </h3>
+        <h3>Popular Searches</h3>
         <table class="table" id="myTable">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Department</th>
+              <th scope="col" class="col-md-8">Title</th>
+              <th scope="col">Author</th>
             </tr>
           </thead>
           <tbody>
-            <% for(let i=0;i<Employee.length;i++){ %>
+            <% for(let i=0;i<10;i++){ %>
             <tr>
-              <td><%= Employee[i].FIRST_NAME %></td>
-              <td><%= Employee[i].DEPARTMENT %></td>
+              <td><%= Employee[i].Title %></td>
+              <td><%= Employee[i].firstName %> <%= Employee[i].lastName %></td>
+              <!-- <td><%= Employee[i].SALARY %></td> -->
             </tr>
             <% } %>
           </tbody>
