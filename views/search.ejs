@@ -31,6 +31,10 @@
       <h1 style="font-size: 50px;color: brown;margin-top: -20px;">
         <%= detail[0].Title %>
       </h1>
+      <h4 style="margin-top: 2%">Paper By</h4>
+      <% for(let i=0;i<detail.length;i++){ %>
+        <h3 style="font-size: 18px;font-weight: 400;color: blue"><span><%= detail[i].firstName %> <%= detail[i].lastName %><% if(detail.length>1){ %>,<% } %></span></h3>
+      <% } %>
     </header>
     <div class="container" style="display:flex">
       <article
@@ -38,7 +42,7 @@
         style="display:block;width:60%;padding-right:0%"
       >
         <h3>Abstract</h3>
-        <div style="">
+        <div style="line-height: 1.5rem">
           <p><%= detail[0].Abstract %></p>
         </div>
       </article>

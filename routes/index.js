@@ -26,14 +26,27 @@ router.post("/", (req, res, next) => {
   con.query("USE RBuddy", (err, result) => {
     if (err) throw err;
   });
-  SQL =
-    "select idArticle, firstName , lastName , Title from Article,Author,Writes where idArticle = articleID and idAuthor = authorID and firstName = '" +
-    condition +
-    "'";
+  let SQL = "";
+  if (req.body.searchBy === "Author") {
+    SQL =
+      "select idArticle, firstName , lastName , Title from article,author,writes where idArticle = articleID and idAuthor = authorID and firstName = '" +
+      condition +
+      "'";
+  } else if (req.body.searchBy === "Keyword") {
+    res.render("search");
+  } else if (req.body.searchBy === "Title") {
+    SQL =
+      "select idArticle, firstName , lastName , Title,Abstract, URL from article,author,writes where idArticle = articleID and idAuthor = authorID and Title = '" +
+      condition +
+      "'";
+  }
   con.query(SQL, (err, result) => {
     if (err) throw err;
     console.log("\n", "Here is the result : \n", result);
-    res1.render("page", { Employee: result, title: "Research Buddy" });
+    res1.render("page", {
+      Employee: result,
+      title: "Research Buddy"
+    });
   });
 });
 
