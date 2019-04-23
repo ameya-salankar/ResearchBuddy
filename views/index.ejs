@@ -1,6 +1,75 @@
+<!------ Include the above in your HEAD tag ---------->
 <% include partials/header %>
-    <h1><%= title %></h1>
-    <p>Welcome to <%= title %></p>
+  <div class="container search-bar">
+      <div class="row">
+            <div class="col-md-12">
+            <h2 class="title">Research Buddy</h2>
+                <div id="custom-search-input">
+                    <form method="POST" class="input-group col-md-12" action="/" >
+                        <input name="Search" type="text" class="form-control input-lg-12" placeholder="Search for Papers" />
+                        <button class="btn btn-primary btn-lg" type="submit">
+                            Search
+                        </button>
+                      </form>
+                </div>
+            </div>
+      </div>
+    </div>
+
+    <div class="container search-table">
+      <div class="search-box">
+        <div class="row">
+          <div class="col-md-3">
+            <h5>Our Top Papers</h5>
+          </div>
+          <div class="col-md-9">
+            <input
+              type="text"
+              id="myInput"
+              onkeyup="myFunction()"
+              class="form-control"
+              placeholder="Search all fields e.g. HTML"
+            />
+            <script>
+              $(document).ready(function() {
+                $("#myInput").on("keyup", function() {
+                  var value = $(this)
+                    .val()
+                    .toLowerCase();
+                  $("#myTable tr").filter(function() {
+                    $(this).toggle(
+                      $(this)
+                        .text()
+                        .toLowerCase()
+                        .indexOf(value) > -1
+                    );
+                  });
+                });
+              });
+            </script>
+          </div>
+        </div>
+      </div>
+      <div class="search-list">
+        <h3><%= Employee.length %> results found </h3>
+        <table class="table" id="myTable">
+          <thead>
+            <tr>
+              <th>Name</th>
+              <th>Department</th>
+            </tr>
+          </thead>
+          <tbody>
+            <% for(let i=0;i<Employee.length;i++){ %>
+            <tr>
+              <td><%= Employee[i].FIRST_NAME %></td>
+              <td><%= Employee[i].DEPARTMENT %></td>
+            </tr>
+            <% } %>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </body>
 </html>
 <% include partials/footer %>
