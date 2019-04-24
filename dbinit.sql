@@ -78,7 +78,7 @@ CREATE TABLE IF NOT EXISTS Writes (
 
 
 /* INSERT QUERIES */
-insert into Article values(312315,'https://www.google.com?q=Citizenship+and+Science:+The+Connecting+Axes','2005-09-01','Citizenshipand Science: The Connecting Axes','The purpose of the Citizenship and Science Exchange (CaSE) project was to enable pupils to critically evaluate the inter-related roles of Science and Citizenship. It also aspired to raise an awareness of the interdependencies that exist between communities in the Irish border region.');
+insert into Article values(312315,'https://www.google.com?q=Citizenship+and+Science:+The+Connecting+Axes','2005-09-01','Citizenship and Science: The Connecting Axes','The purpose of the Citizenship and Science Exchange (CaSE) project was to enable pupils to critically evaluate the inter-related roles of Science and Citizenship. It also aspired to raise an awareness of the interdependencies that exist between communities in the Irish border region.');
 insert into Article values(312316,'https://www.google.com?q=Pastoral Care in Schools: Promoting Positive Behaviour','2001-04-01','Pastoral Care in Schools: Promoting Positive Behaviour','This document provides guidance for staff to develop and review their policies and procedures surronding the way pupils behave in schools. It reflects strategies and examples of good practice to help promote and maintain positive behaviour in schools. There is also a section on developing an anti-bullying culture.');
 insert into Article values(312317,'https://www.google.com?q=Schools for the Future: Funding, Strategy, Sharing','2006-12-01','Schools for the Future: Funding, Strategy, Sharing','The Review examines funding of the education system, in particular the strategic planning and organisation of the schools’ estate, taking account of the curriculum changes, including the wider provision for 14-19 year olds, and also demographic trends.');
 insert into Article values(312319,'https://www.google.com?q=Gifted and talented children in (and out) of the classroom','2006-02-01','Gifted and talented children in (and out) of the classroom','This Literature Review report provides teachers with information and guidance on identifying gifted and talented children in their classroom. A guidance document addressing identification, whole school management and classroom strategies for educating these children will be published later this year. It also provides information on the particular issues faced by gifted and talented children.');
@@ -123,7 +123,7 @@ insert into Medium values ('Journal', '035336430-4','Schools and the World');
 insert into Medium values ('Book', '777840951-8', 'Gifted Children around the world');
 insert into Medium values ('Conference', '504746422-9', 'Neuroscience and Education');
 insert into Medium values ('Journal', '198351112-9', 'Nature');
-insert into Medium values ('Conference', '917411380-1', 'Post Primary Teachers of India');
+insert into Medium values ('Conference', '917411380-1', 'Post Primary Teachers of Northern Ireland');
 insert into Medium values ('Journal', '975720631-8', 'Northern Ireland Annual Reports');
 insert into Medium values ('Conference', '186811065-6', 'Professional Development around the world');
 insert into Medium values ('Journal', '894944533-6', 'Northern Ireland Annual Reports');
