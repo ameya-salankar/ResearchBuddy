@@ -33,7 +33,7 @@
       </h1>
       <h4 style="margin-top: 2%">Paper By</h4>
       <% for(let i=0;i<detail.length;i++){ %>
-        <h3 style="font-size: 20px;font-weight: 400;color: blue"><span><%= detail[i].firstName %> <%= detail[i].lastName %><% if(detail.length>1){ %> <% } %></span></h3>
+        <h3 style="font-size: 20px;font-weight: 400;color: blue"><span><%= detail[i].firstName %> <%= detail[i].lastName %>, <%= detail[i].instituteName %> <% if(detail.length>1){ %> <% } %></span></h3>
       <% } %>
     </header>
     <div class="container" style="display:flex">
