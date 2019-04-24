@@ -16,3 +16,11 @@ a :hover {
 a :active {
   text-decoration: brown;
 }
+
+.message {
+  text-align: center;
+}
+
+.shunt {
+  color: darkred;
+}

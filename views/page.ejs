@@ -26,17 +26,21 @@
   <body>
     <header class="jumbotron" style="text-align:center">
       <h1>Research Buddy</h1>
-        <h5>Papers by </h5>
-          <% for(let i=0;i<Employee.length;i++){ %>
-              <h5><span style="color:blue"><%= Employee[i].firstName %> <%= Employee[i].lastName %></span></h5>
-          <% } %>
+        <h5>Papers from Search by</h5>
+        <h4 style="color:brown; margin: 0; font-size:50px;"><%= by %></h4>
         </h5>
     </header>
     <section class="container">
-      <% for(let i=0;i<Employee.length;i++){ %>
-          <div class="container-fluid Research" style="display:flex"> 
-              <span><div style="margin-right: 10px;"><h4><%= i+1 %>.)</h4></div></span><a class="" href="/search?id=<%= Employee[i].idArticle %>"><h4 style="text-transform:capitalize"><%= Employee[i].Title %></h4></a>
-          </div>
+      <% if(Employee.length == 0) { %>
+        <h4 class="message">Nothing Found for <span class="shunt"><%= query %></span></h4>
+      <% } else { %>
+        <% let set1 = new Set(Employee) %>
+        <% let newEmployee = Array.from(set1) %>
+        <% for(let i=0;i<newEmployee.length;i++){ %>
+            <div class="container-fluid Research" style="display:flex"> 
+                <span><div style="margin-right: 10px;"><h4><%= i+1 %>.</h4></div></span><a class="" href="/search?id=<%= newEmployee[i].idArticle %>"><h4 style="text-transform:capitalize"><%= newEmployee[i].Title %></h4> <h5><%= newEmployee[i].firstName %> <%= newEmployee[i].lastName %></h5></a>
+            </div>
+        <% } %>
       <% } %>
     </section>
   </body>

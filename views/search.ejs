@@ -33,28 +33,33 @@
       </h1>
       <h4 style="margin-top: 2%">Paper By</h4>
       <% for(let i=0;i<detail.length;i++){ %>
-        <h3 style="font-size: 18px;font-weight: 400;color: blue"><span><%= detail[i].firstName %> <%= detail[i].lastName %><% if(detail.length>1){ %>,<% } %></span></h3>
+        <h3 style="font-size: 20px;font-weight: 400;color: blue"><span><%= detail[i].firstName %> <%= detail[i].lastName %><% if(detail.length>1){ %> <% } %></span></h3>
       <% } %>
     </header>
     <div class="container" style="display:flex">
       <article
         class="container"
-        style="display:block;width:60%;padding-right:0%"
+        style="display:block;width:80%;padding-right:0%"
       >
         <h3>Abstract</h3>
-        <div style="line-height: 1.5rem">
-          <p><%= detail[0].Abstract %></p>
+        <div style="line-height: 1.5rem;width: 80%;">
+          <p style="font-size: 18px"><%= detail[0].Abstract %></p>
         </div>
       </article>
-      <section style="margin-left:0% ; width: 30%; ">
+      <section style="margin-left:4% ; width: 30%; ">
         <h3>URL</h3>
         <span
-          ><a href="<%= detail[0].URL %>" style="color:blue"
-            ><%=detail[0].URL%></a
+          ><a href="https://<%= detail[0].URL %>?q=<%= detail[0].Title %>" style="color:blue"
+            ><%=detail[0].Title%></a
           ></span
         >
         <!-- <a href="<%= detail[0].URL %>" style="color:blue"><%=detail[0].URL%></a> -->
       </section>
     </div>
+    <article class="container"
+      style="display:block ; width:80% ; padding: left 2.5%; margin-top: 2%;">
+      <b><h3>Published in the <%= detail[0].Type %><br/></h3></b>
+      <h5><%= detail[0].Name %></h5>
+    </article>
   </body>
 </html>

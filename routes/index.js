@@ -27,25 +27,49 @@ router.post("/", (req, res, next) => {
     if (err) throw err;
   });
   let SQL = "";
+
   if (req.body.searchBy === "Author") {
+    let fname = "",
+      lname = "";
+    let flag = 0;
+    for (let i = 0; i < condition.length; i++) {
+      if (condition[i] == " ") {
+        flag = 1;
+        continue;
+      }
+      if (flag === 0) fname += condition[i];
+      else if (flag == 1) lname += condition[i];
+    }
+    console.log(fname, lname);
+
     SQL =
-      "select idArticle, firstName , lastName , Title from article,author,writes where idArticle = articleID and idAuthor = authorID and firstName = '" +
-      condition +
-      "'";
+      "select idArticle, firstName , lastName , Title from Article,Author,Writes where idArticle = articleID and idAuthor = authorID and firstName LIKE '%" +
+      fname +
+      "%'";
   } else if (req.body.searchBy === "Keyword") {
-    res.render("search");
+    // SQL =
+    //   "select articleID, firstName, lastName, Title from Refs, Article, Author where idArticle = articleID and idAuthor = authorID and keyword LIKE '%" +
+    //   condition +
+    //   "%';";
+    SQL =
+      "select idArticle, Title from Article where idArticle in (select idArticle from Article, Search where articleID = idArticle and keyword like '%" +
+      condition +
+      "%');";
   } else if (req.body.searchBy === "Title") {
     SQL =
-      "select idArticle, firstName , lastName , Title,Abstract, URL from article,author,writes where idArticle = articleID and idAuthor = authorID and Title = '" +
+      "select idArticle, Title, Abstract, URL from Article where Title LIKE '%" +
       condition +
-      "'";
+      "%'";
   }
+
   con.query(SQL, (err, result) => {
     if (err) throw err;
     console.log("\n", "Here is the result : \n", result);
     res1.render("page", {
       Employee: result,
-      title: "Research Buddy"
+      title: "Research Buddy",
+      by: req.body.searchBy,
+      query: condition
     });
   });
 });
@@ -54,11 +78,27 @@ router.post("/", (req, res, next) => {
 router.get("/search", (req, res, next) => {
   let id = req.query.id;
   con.query("USE RBuddy", (err, result) => {
-    if (err) throw err;
+    if (err) {
+      res.render("error", {
+        message: "An error occured.",
+        error: err
+      });
+    }
   });
-  SQL = "SELECT * FROM article WHERE idArticle = " + id;
+  SQL =
+    "SELECT * FROM Article, Author, Writes, Medium, Published_In \
+    WHERE Writes.articleID = Article.idArticle and Writes.authorID = Author.idAuthor \
+    and \
+    Article.idArticle = Published_In.articleID and Published_In.ISBN = Medium.ISBN and idArticle = " +
+    id;
   con.query(SQL, (err, result) => {
     console.log(result);
+    if (err) {
+      res.render("error", {
+        message: "An error occured",
+        error: err
+      });
+    }
     res.render("search", { title: "Research Buddy", detail: result });
   });
 });
